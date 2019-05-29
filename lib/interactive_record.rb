@@ -55,7 +55,7 @@ class InteractiveRecord
 
   def self.find_by(identifier)
     binding.pry
-    sql = "SELECT * FROM #{self.table_name} WHERE #{identifier.to_a[0]} = #{identifier.to_a[1]}"
+    sql = "SELECT * FROM #{self.table_name} WHERE #{identifier.to_a.flatten[0]} = #{identifier.to_a.flatten[1]}"
     DB[:conn].execute(sql, identifier)
   end
 
