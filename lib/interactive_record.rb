@@ -49,13 +49,13 @@ class InteractiveRecord
   end
 
   def self.find_by_name(name)
-    # binding.pry
     sql = "SELECT * FROM #{self.table_name} WHERE name = ?"
     DB[:conn].execute(sql, name)
   end
 
-  def find_by(identifier)
-
+  def self.find_by(identifier)
+    sql = "SELECT * FROM #{self.table_name} WHERE #{identifier.to_a.flatten[0].to_s} = '#{identifier.to_a.flatten[1]}'"
+    DB[:conn].execute(sql)
   end
 
 end
